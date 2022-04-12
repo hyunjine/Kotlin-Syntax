@@ -23,37 +23,64 @@ object ScopeFunction {
 
         val mRun = getClass().run {
             a = a.plus("마바사")
-            b = b.plus("efg")
+            b.plus("efg")
         }
         Log.d(TAG, "run: $mRun")
 
         val mLet = getClass().let {
             it.a = it.a.plus("마바사")
-            it.b = it.b.plus("efg")
+            it.b.plus("efg")
         }
         Log.d(TAG, "let: $mLet")
 
         val mAlso = getClass().also {
             it.a = it.a.plus("마바사")
-            it.b = it.b.plus("efg")
+            it.b.plus("efg")
         }
         Log.d(TAG, "also: $mAlso")
 
         val mWith = with(getClass()) {
             a = a.plus("마바사")
-            b = b.plus("efg")
+            b.plus("efg")
         }
         Log.d(TAG, "with: $mWith")
-
-        val empty = test()
-        Log.d(TAG, "empty: $empty")
-    }
-
-    private fun test(): Unit {
 
     }
 
     private fun getClass() = MyClass("가나다", "abc")
+
+    private fun varietyNullCheck() {
+        val a: String? = null
+        val b: String = ""
+
+        a?.apply {
+            println("a: apply 통과")
+        }
+        a?.run {
+            println("a: run 통과")
+        }
+        a?.also {
+            println("a: also 통과")
+        }
+        a?.let {
+            println("a: let 통과")
+        }
+
+        println("----")
+
+        b?.apply {
+            println("b: apply 통과")
+        }
+        b?.run {
+            println("b: run 통과")
+        }
+        b?.also {
+            println("b: also 통과")
+        }
+        b?.let {
+            println("b: let 통과")
+        }
+    }
 }
 
 data class MyClass(
