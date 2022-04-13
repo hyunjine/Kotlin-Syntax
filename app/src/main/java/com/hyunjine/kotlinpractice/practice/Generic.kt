@@ -1,17 +1,39 @@
 package com.hyunjine.kotlinpractice.practice
 
+import android.os.SystemClock
 import android.util.Log
+import kotlin.time.seconds
 
 const val TAG = "winter"
 class Generic {
     fun main() {
-        Using(A()).test()
-        Using(B()).test()
-        Using(C()).test()
-//        UsingGeneric<A>(A()).test()
-//        UsingGeneric<B>(B()).test()
-//        UsingGeneric<C>(C()).test()
+        val startTime = SystemClock.elapsedRealtime()
+        for (i: Int in 1..100) {
+            cast()
+        }
+
+        val finishTime = SystemClock.elapsedRealtime()
+        Log.d("result", "main: ${(finishTime - startTime)}")
+
     }
+}
+
+fun generic() {
+    val a = UsingGeneric<A>(A())
+    val b = UsingGeneric<B>(B())
+    val c = UsingGeneric<C>(C())
+    a.test()
+    b.test()
+    c.test()
+}
+
+fun cast() {
+    val a = Using(A())
+    val b = Using(B())
+    val c = Using(C())
+    a.test()
+    b.test()
+    c.test()
 }
 
 open class A {
