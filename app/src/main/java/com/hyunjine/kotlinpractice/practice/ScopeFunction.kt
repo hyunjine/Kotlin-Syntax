@@ -59,11 +59,11 @@ object ScopeFunction {
         a?.run {
             println("a: run 통과")
         }
-        a?.also {
+        a?.also { test ->
             println("a: also 통과")
         }
-        a?.let {
-            println("a: let 통과")
+        a?.let { test ->
+            println("a: $test let 통과")
         }
 
         println("----")

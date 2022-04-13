@@ -2,6 +2,7 @@ package com.hyunjine.kotlinpractice
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.hyunjine.kotlinpractice.practice.Generic
 import com.hyunjine.kotlinpractice.practice.ScopeFunction
 
 class MainActivity : AppCompatActivity() {
@@ -13,6 +14,6 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        ScopeFunction.start()
+        Generic().main()
     }
 }
